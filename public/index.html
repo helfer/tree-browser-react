@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tree Browser Demo</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <h1>TreeBrowser Demo</h1>
+    <div>
+      <div id="content"></div>
+      <button id="addNodeButton">Add random node</button><br/>
+      <button id="deleteNodeButton">Delete random node</button><br/>
+      <button id="renameNodeButton">Rename random node</button><br/>
+      <p>QUnit tests at <a href="/test.html">test.html</a></p>
+    </div>
+    <script type="text/javascript" src="scripts/dataset.js"></script>
+    <script type="text/javascript" src="scripts/TreeNode.js"></script>
+    <script type="text/javascript" src="scripts/randomTreeModifier.js"></script>
+    <script type="text/javascript" src="scripts/ReactTreeBrowser.js"></script>
+
+    <script type="text/javascript">
+      var treeRoot = new TreeNode(dataset.treeData);
+
+      // initial rendering
+      ReactDOM.render(
+        React.createElement(ReactTreeBrowser, {node: treeRoot, visible: true}),
+        document.getElementById('content')
+      );
+
+      //re-render tree on updates
+      var updateTree = function(){
+        ReactDOM.render(
+          React.createElement(ReactTreeBrowser, {node: treeRoot, visible: true}),
+          document.getElementById('content')
+        );
+      };
+      treeRoot.setOnChangeListener(updateTree);
+
+      var modifyTreeFunc = function modifyTreeFunc( type ){
+        return function(){
+          randomTreeModifier.makeRandomModification(treeRoot, type);
+        };
+      };
+
+      document.getElementById('addNodeButton').onclick = modifyTreeFunc('add');
+      document.getElementById('deleteNodeButton').onclick = modifyTreeFunc('delete');
+      document.getElementById('renameNodeButton').onclick = modifyTreeFunc('rename');
+    </script>
+
+  </body>
+</html>

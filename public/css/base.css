@@ -1,0 +1,23 @@
+html {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+div#content {
+  min-height: 300px;
+}
+
+li {
+  list-style-type: none;
+}
+
+span.toggleCollapse {
+  width:16px;
+  float: left;
+  cursor: pointer;
+}
+
+span.togglePlaceholder {
+  width:16px;
+  float: left;
+}

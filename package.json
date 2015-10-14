@@ -1,0 +1,13 @@
+{
+  "name": "tree-browser-react",
+  "version": "0.1.0",
+  "description": "A basic demo app for a tree browser in React.js.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.4.5",
+    "jquery": "latest"
+  },
+  "scripts": {
+    "start": "node server.js",
+  }
+}
