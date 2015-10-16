@@ -11,7 +11,7 @@ var TreeNode = (function($){
     var that = this;
 
     this.name = node.name;
-    this.collapsed = !!node.collapsed;
+    this.collapsed = !!node.collapsed; // evaluates to false if node.collapsed is undefined
     this.children = [];
     this.ancestor = ancestor;
     this.key = node.key;
@@ -85,6 +85,7 @@ var TreeNode = (function($){
   // subnodes are shown
   TreeNode.prototype.toggleCollapse = function(){
     this.collapsed = !this.collapsed;
+    this._changed();
   };
 
 
