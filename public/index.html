@@ -28,14 +28,14 @@
 
       // initial rendering
       ReactDOM.render(
-        React.createElement(ReactTreeBrowser, {node: treeRoot, visible: true}),
+        React.createElement(ReactTreeBrowser, {node: treeRoot}),
         document.getElementById('content')
       );
 
       //re-render tree on updates
       var updateTree = function(){
         ReactDOM.render(
-          React.createElement(ReactTreeBrowser, {node: treeRoot, visible: true}),
+          React.createElement(ReactTreeBrowser, {node: treeRoot}),
           document.getElementById('content')
         );
       };

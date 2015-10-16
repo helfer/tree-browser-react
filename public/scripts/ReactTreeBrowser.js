@@ -1,7 +1,25 @@
 var ReactTreeBrowser = (function(React, $){
   "use strict";
 
-  var TreeBrowser = React.createClass({displayName: "TreeBrowser",
+  var TreeBrowser = React.createClass({
+
+    displayName: "TreeBrowser",
+
+    propTypes: {
+      node: React.PropTypes.shape({
+          name: React.PropTypes.string.isRequired,
+          children: React.PropTypes.array,
+          collapsed: React.PropTypes.bool
+        }).isRequired,
+      visible: React.PropTypes.bool,
+      key: React.PropTypes.string
+    },
+
+    getDefaultProps: function(){
+      return {
+        visible: true
+      };
+    },
 
     getInitialState: function(){
       return {
@@ -22,16 +40,17 @@ var ReactTreeBrowser = (function(React, $){
         );
       });
 
+      var collapsedIndicator;
       if( this.props.node.children && this.props.node.children.length > 0 ){
         var state = this.state.collapsed ? '+' : '-';
-        var collapsedIndicator = (
-            React.createElement("span", {onClick: this.toggleCollapse, className: "toggleCollapse"},
-              state
-            )
+        collapsedIndicator = (
+          React.createElement("span", {onClick: this.toggleCollapse, className: "toggleCollapse"},
+            state
+          )
         );
 
       } else {
-        var collapsedIndicator = (
+        collapsedIndicator = (
             React.createElement("span", {className: "togglePlaceholder"}, " ")
         );
       }
