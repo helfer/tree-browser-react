@@ -1,3 +1,7 @@
+/*
+ * @flow
+ */
+
 var TreeNode = (function($){
   "use strict";
 

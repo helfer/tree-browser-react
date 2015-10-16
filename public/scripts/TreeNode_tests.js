@@ -1,4 +1,9 @@
-// TreeNode tests
+/*
+ * TreeNode tests
+ *
+ * @flow
+ */
+
 
 var treeData = {
   name: "root",

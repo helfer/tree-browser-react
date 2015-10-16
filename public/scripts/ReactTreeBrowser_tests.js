@@ -1,3 +1,7 @@
+/*
+ * @flow
+ */
+
 var fullTree = new TreeNode(dataset.treeData);
 
 var simpleTree = new TreeNode({ name: 'root', children: [], collapsed: false });

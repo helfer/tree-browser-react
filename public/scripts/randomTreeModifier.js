@@ -1,3 +1,7 @@
+/*
+ * @flow
+ */
+
 var randomTreeModifier = (function($){
   "use strict";
 

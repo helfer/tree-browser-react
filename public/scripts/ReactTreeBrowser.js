@@ -1,3 +1,7 @@
+/*
+ * @flow
+ */
+
 var ReactTreeBrowser = (function(React, $){
   "use strict";
 
@@ -34,11 +38,14 @@ var ReactTreeBrowser = (function(React, $){
     render: function() {
       var that = this;
 
-      var childNodes = this.props.node.children.map( function( node ){
-        return (
-          React.createElement(TreeBrowser, {node: node, key: node.key, visible: !that.state.collapsed})
-        );
-      });
+      var childNodes = [];
+      if( this.props.node.children ){
+        childNodes = this.props.node.children.map( function( node ){
+          return (
+            React.createElement(TreeBrowser, {node: node, key: node.key, visible: !that.state.collapsed})
+          );
+        });
+      }
 
       var collapsedIndicator;
       if( this.props.node.children && this.props.node.children.length > 0 ){
