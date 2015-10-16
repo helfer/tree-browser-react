@@ -136,7 +136,7 @@ var root = new TreeNode({ name: 'root' });
 var domElement = doucment.getElementById("some-element-id-here");
 
 ReactDOM.render(
-  React.createElement(ReactTreeBrowser, {node: root, visible: true}),
+  React.createElement(ReactTreeBrowser, {node: root}),
   domElement
 );
 ```
@@ -146,7 +146,7 @@ onChange callback:
 ```javascript
 var updateTree = function(){
   ReactDOM.render(
-    React.createElement(ReactTreeBrowser, {node: treeRoot, visible: true}),
+    React.createElement(ReactTreeBrowser, {node: treeRoot}),
     document.getElementById('content')
   );
 };
